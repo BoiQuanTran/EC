@@ -158,9 +158,7 @@ const Staff = () => {
                                                             }}
                                                         />
                                                     </TableCell>
-                                                    <TableCell align={'left'}>
-                                                        {row.firstName}
-                                                    </TableCell>
+                                                    <TableCell align={'left'}>{row.firstName}</TableCell>
                                                     <TableCell align={'left'}>{row.lastName}</TableCell>
                                                     <TableCell align={'left'}>{row.email}</TableCell>
                                                     <TableCell align={'left'}>{row.phone}</TableCell>

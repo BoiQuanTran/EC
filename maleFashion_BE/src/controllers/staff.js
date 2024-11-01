@@ -26,7 +26,7 @@ const StaffController = {
             const result = await StaffService.createStaff(req.body);
             return res.json(new ResponseModel(200, ['Thêm nhân viên thành công'], result));
         } catch (e) {
-            return res.status(500).json(new ResponseModel(500, ['Lỗi thêm thông tin nhân viên'], null));
+            return res.status(500).json(new ResponseModel(500, ['Lỗi thêm thông tin nhân viên' + e], null));
         }
     },
 

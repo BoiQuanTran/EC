@@ -104,6 +104,7 @@ const StaffToolbar = (props) => {
                     variant='h4'
                     id='tableTitle'
                     component='div'
+                    
                 >
                     Staff
                 </Typography>

@@ -2111,6 +2111,7 @@ ol {
 }
 
 .about__item {
+    text-align: justify;
     margin-bottom: 30px;
 }
 
@@ -2133,8 +2134,8 @@ ol {
 }
 
 .testimonial__text {
-    text-align: center;
-    padding: 130px 150px 175px;
+    text-align: justify;
+    padding: 60px 150px 0px;
 }
 
 .testimonial__text span {
@@ -2153,6 +2154,7 @@ ol {
 
 .testimonial__author {
     display: inline-block;
+    float: right;
 }
 
 .testimonial__author__pic {
@@ -2164,6 +2166,7 @@ ol {
     height: 60px;
     width: 60px;
     border-radius: 50%;
+    margin-top: -15px;
 }
 
 .testimonial__author__text {
@@ -2172,7 +2175,7 @@ ol {
 }
 
 .testimonial__author__text h5 {
-    color: #111111;
+    color: #000000;
     font-weight: 700;
     margin-bottom: 5px;
 }
@@ -2238,16 +2241,26 @@ ol {
 /*---------------------
   Testimonial
 -----------------------*/
-
+.row {
+    display: flex;
+    justify-content: center; /* Căn giữa tất cả các phần tử trong dòng */
+    flex-wrap: wrap; /* Cho phép các phần tử xuống dòng nếu không đủ chỗ */
+}
 .team {
     padding-bottom: 70px;
 }
-
+.col-sm-6{
+    margin-left: 20px;
+    margin-right: 20px;
+}
 .team__item {
+    justify-content: center; /* Căn giữa theo chiều ngang */
     margin-bottom: 30px;
+
 }
 
 .team__item img {
+    border-bottom: solid;
     min-width: 100%;
     margin-bottom: 25px;
 }
@@ -2256,12 +2269,14 @@ ol {
     color: #111111;
     font-weight: 700;
     margin-bottom: 8px;
+    text-align: center;
 }
 
 .team__item span {
     font-size: 15px;
     display: block;
     color: #b7b7b7;
+    text-align: center;
 }
 
 /*---------------------
