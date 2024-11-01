@@ -1,7 +1,7 @@
 import Layout from '../components/layout';
 import { Constant } from '../core/constant';
 
-export default function Contact() {
+export default function Delivery() {
     return (
         <Layout>
             <div className='map'>
