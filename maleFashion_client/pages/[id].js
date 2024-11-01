@@ -222,9 +222,7 @@ export default function ProductDetail() {
                                                 </div>
                                                 <p className='text-left'>{description}</p>
                                                 <div className='product__details__cart__option text-left'>
-                                                    <button onClick={handleAddToCart} className='primary-btn mr-3'>add to
-                                                        cart
-                                                    </button>
+                                                    <button onClick={handleAddToCart} className='primary-btn mr-3'>add to cart</button>
                                                     <div className='quantity'>
                                                         <div className='pro-qty'>
                                                             <input type='number'

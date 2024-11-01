@@ -2007,7 +2007,7 @@
     //     mm = String(mm).padStart(2, '0');
 
     // }
-    var timerdate = '12' + '/' + '31' + '/' + '2024';
+    var timerdate = '11' + '/' + '30' + '/' + '2024';
     // For demo preview end
 
 

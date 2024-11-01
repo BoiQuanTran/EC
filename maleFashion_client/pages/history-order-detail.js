@@ -87,64 +87,51 @@ export default function HistoryOrderDetail({ saleOrderFull, total }) {
                                                         {/*</span>*/}
                                                     </div>
                                                 </div>
-                                                <div className='tracking-card'>
-                                                    <div className='row d-flex justify-content-center'>
-                                                        <div className='col-12'>
-                                                            <ul id='progressbar' className='text-center'>
-                                                                <li className={`${SALE_ORDER_STATUS.getNumber(saleOrderFull.status) >= 0 ? 'active' : ''} step0`} />
-                                                                <li className={`${SALE_ORDER_STATUS.getNumber(saleOrderFull.status) >= 1 ? 'active' : ''} step0`} />
-                                                                <li className={`${SALE_ORDER_STATUS.getNumber(saleOrderFull.status) >= 2 ? 'active' : ''} step0`} />
-                                                                <li className={`${SALE_ORDER_STATUS.getNumber(saleOrderFull.status) >= 3 ? 'active' : ''} step0`} />
-                                                            </ul>
-                                                        </div>
+                                                {saleOrderFull.status === SALE_ORDER_STATUS.CANCELED ? (
+                                                    <div className='text-center'>
+                                                        <img className='icon mb-2' src='img/order-status/canceled.png' />
+                                                        <p className='font-weight-bold'>Canceled</p>
                                                     </div>
-                                                    <div className='row justify-content-between top'>
-                                                        <div className='row d-flex icon-content flex-column'>
-                                                            <img
-                                                                className='icon'
-                                                                src='img\order-status\pending.png'
-                                                            />
-                                                            <div className='d-flex flex-column order-status'>
-                                                                <p className='font-weight-bold'>
-                                                                    Pending
-                                                                </p>
+                                                ) : (
+                                                    <div className='tracking-card'>
+                                                        <div className='row d-flex justify-content-center'>
+                                                            <div className='col-12'>
+                                                                <ul id='progressbar' className='text-center'>
+                                                                    <li className={`${SALE_ORDER_STATUS.getNumber(saleOrderFull.status) >= 0 ? 'active' : ''} step0`} />
+                                                                    <li className={`${SALE_ORDER_STATUS.getNumber(saleOrderFull.status) >= 1 ? 'active' : ''} step0`} />
+                                                                    <li className={`${SALE_ORDER_STATUS.getNumber(saleOrderFull.status) >= 2 ? 'active' : ''} step0`} />
+                                                                    <li className={`${SALE_ORDER_STATUS.getNumber(saleOrderFull.status) >= 3 ? 'active' : ''} step0`} />
+                                                                </ul>
                                                             </div>
                                                         </div>
-                                                        <div className='row d-flex icon-content flex-column'>
-                                                            <img
-                                                                className='icon'
-                                                                src='img\order-status\confirmed.png'
-                                                            />
-                                                            <div className='d-flex flex-column order-status'>
-                                                                <p className='font-weight-bold'>
-                                                                    Confirmed
-                                                                </p>
+                                                        <div className='row justify-content-between top'>
+                                                            <div className='row d-flex icon-content flex-column'>
+                                                                <img className='icon' src='img/order-status/pending.png' />
+                                                                <div className='d-flex flex-column order-status'>
+                                                                    <p className='font-weight-bold'>Pending</p>
+                                                                </div>
                                                             </div>
-                                                        </div>
-                                                        <div className='row d-flex icon-content flex-column'>
-                                                            <img
-                                                                className='icon'
-                                                                src='img\order-status\delivering.png'
-                                                            />
-                                                            <div className='d-flex flex-column order-status'>
-                                                                <p className='font-weight-bold'>
-                                                                    Delivering
-                                                                </p>
+                                                            <div className='row d-flex icon-content flex-column'>
+                                                                <img className='icon' src='img/order-status/confirmed.png' />
+                                                                <div className='d-flex flex-column order-status'>
+                                                                    <p className='font-weight-bold'>Confirmed</p>
+                                                                </div>
                                                             </div>
-                                                        </div>
-                                                        <div className='row d-flex icon-content flex-column'>
-                                                            <img
-                                                                className='icon mb-2'
-                                                                src='img\order-status\complete.png'
-                                                            />
-                                                            <div className='d-flex flex-column order-status'>
-                                                                <p className='font-weight-bold'>
-                                                                    Complete
-                                                                </p>
+                                                            <div className='row d-flex icon-content flex-column'>
+                                                                <img className='icon' src='img/order-status/delivering.png' />
+                                                                <div className='d-flex flex-column order-status'>
+                                                                    <p className='font-weight-bold'>Delivering</p>
+                                                                </div>
+                                                            </div>
+                                                            <div className='row d-flex icon-content flex-column'>
+                                                                <img className='icon mb-2' src='img/order-status/complete.png' />
+                                                                <div className='d-flex flex-column order-status'>
+                                                                    <p className='font-weight-bold'>Complete</p>
+                                                                </div>
                                                             </div>
                                                         </div>
                                                     </div>
-                                                </div>
+                                                )}
                                             </div>
                                         </div>
                                     </div>

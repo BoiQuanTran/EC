@@ -109,7 +109,7 @@ const AddProduct = ({ saveCompleteEvent }) => {
                     name: '',
                     code: '',
                     badge: BADGE_PRODUCT.NOTTHING,
-                    star: 1,
+                    star: 5,
                     description: '',
                     exportPrice: 0,
                     salePrice: 0

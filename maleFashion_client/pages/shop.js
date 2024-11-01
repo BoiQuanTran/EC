@@ -69,6 +69,7 @@ export default function Shop() {
         setFilterTextTmp(event.target.value);
         debounceSearch(event.target.value);
     };
+    
     const handleSetCateFilter = (id) => {
         if (id === filterCate) {
             setFilterCate('');

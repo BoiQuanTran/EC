@@ -16,9 +16,9 @@ export default function Footer() {
                         <div className='footer__widget'>
                             <h6>Shopping</h6>
                             <ul>
-                                <li><a href='#'>Clothing Store</a></li>
-                                <li><a href='#'>Trending Shoes</a></li>
-                                <li><a href='#'>Accessories</a></li>
+                                <li><a href='#'>Eyewear Store</a></li>
+                                {/* <li><a href='#'>Trending G</a></li> */}
+                                {/* <li><a href='#'>Accessories</a></li> */}
                                 <li><a href='#'>Sale</a></li>
                             </ul>
                         </div>
@@ -27,10 +27,10 @@ export default function Footer() {
                         <div className='footer__widget'>
                             <h6>Shopping</h6>
                             <ul>
-                                <li><a href='#'>Contact Us</a></li>
-                                <li><a href='#'>Payment Methods</a></li>
-                                <li><a href='#'>Delivary</a></li>
-                                <li><a href='#'>Return vs Exchanges</a></li>
+                                <li><a href='/contact'>Contact Us</a></li>
+                                {/* <li><a href='#'>Payment Methods</a></li> */}
+                                <li><a href='/delivery'>Delivery</a></li>
+                                <li><a href='/return_exchange'>Return vs Exchanges</a></li>
                             </ul>
                         </div>
                     </div>

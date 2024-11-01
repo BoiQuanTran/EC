@@ -21,7 +21,7 @@ mongoose
 
 const startServer = () => {
     var allowedDomains = ["http://localhost:3200", "http://localhost:3100"];
-    app.use(cors({
+    app.use(cors({ 
         origin: function(origin, callback) {
             // bypass the requests with no origin (like curl requests, mobile apps, etc )
             if (!origin) return callback(null, true);

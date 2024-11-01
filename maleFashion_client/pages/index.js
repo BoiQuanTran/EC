@@ -48,11 +48,9 @@ export default function Home() {
                                 <div className='row'>
                                     <div className='col-xl-5 col-lg-7 col-md-8'>
                                         <div className='hero__text'>
-                                            <h2>Men's Eyewear Collection 2024</h2>
-                                            <p>Định hình phong cách phái mạnh năm 2024 với bộ sưu tập kính mắt nam mới nhất từ MEOW Eyewear. 
-                                                Bộ sưu tập mang đến những thiết kế hiện đại, tinh tế, kết hợp cùng chất liệu cao cấp và kiểu dáng đa dạng, từ kính vuông nam tính đến kính tròn cổ điển. 
-                                                Mỗi mẫu kính đều được chọn lựa kỹ lưỡng để phù hợp với nhiều phong cách, từ lịch lãm đến năng động. 
-                                                Hãy khám phá bộ sưu tập kính mắt nam 2024 để tìm kiếm chiếc kính hoàn hảo giúp bạn tự tin thể hiện bản sắc của mình!</p>
+                                            <h2>Women's Eyewear Collection 2024</h2>
+                                            <p> Định hình phong cách phái đẹp năm 2024 với bộ sưu tập kính mắt nữ mới nhất từ MEOW Eyewear. 
+                                                Bộ sưu tập mang đến những thiết kế hiện đại, tinh tế, kết hợp cùng chất liệu cao cấp và kiểu dáng đa dạng, từ kính mắt vuông sắc sảo đến kính tròn thanh lịch. Mỗi mẫu kính đều được chọn lựa kỹ lưỡng để phù hợp với nhiều phong cách, từ sang trọng đến trẻ trung, năng động. Hãy khám phá bộ sưu tập kính mắt nữ 2024 để tìm kiếm chiếc kính hoàn hảo giúp bạn tự tin thể hiện bản sắc riêng của mình!</p>
                                             <a href='/shop' className='primary-btn'>Shop now<span
                                                 className='arrow_right' /></a>
                                             <div className='hero__social'>
@@ -77,7 +75,7 @@ export default function Home() {
                                         <img src='img/banner/banner-1.jpg' alt='' />
                                     </div>
                                     <div className='banner__item__text'>
-                                        <h2>Man Collections 2024</h2>
+                                        <h2>Men's Collection 2024</h2>
                                         <a href='/shop'>Shop now</a>
                                     </div>
                                 </div>
@@ -99,7 +97,7 @@ export default function Home() {
                                         <img src='img/banner/banner-3.jpg' alt='' />
                                     </div>
                                     <div className='banner__item__text'>
-                                        <h2>Woman Collections 2024</h2>
+                                        <h2>Women's Collection 2024</h2>
                                         <a href='/shop'>Shop now</a>
                                     </div>
                                 </div>
@@ -426,7 +424,7 @@ export default function Home() {
                             <div className='col-lg-4 offset-lg-1'>
                                 <div className='categories__deal__countdown'>
                                     <span>Deal Of The Week</span>
-                                    <h2>Multi-pocket Chest Bag Black</h2>
+                                    <h2>BLACK SATURN</h2>
                                     <div className='categories__deal__countdown__timer' id='countdown'>
                                         <div className='cd-item'>
                                             <span>3</span>
