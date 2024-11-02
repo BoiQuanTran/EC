@@ -119,26 +119,26 @@ export default function About() {
                             </div>
                         </div>
                     </div>
-                    <div className='row'>
-                        <div className='col-lg-3 col-md-6 col-sm-6'>
+                    <div className='row_team'>
+                        <div className='col-lg-3 col-md-6 col-sm-6 box_team_item'>
                             <div className='team__item'>
                                 <img src='img/about/team-1.jpg' alt='' />
-                                <h4>John Smith</h4>
-                                <span>Fashion Design</span>
+                                <h4>Trần Bội Quân</h4>
+                                {/* <span>Fashion Design</span> */}
                             </div>
                         </div>
-                        <div className='col-lg-3 col-md-6 col-sm-6'>
+                        <div className='col-lg-3 col-md-6 col-sm-6 box_team_item'>
                             <div className='team__item'>
                                 <img src='img/about/team-2.jpg' alt='' />
-                                <h4>Christine Wise</h4>
-                                <span>C.E.O</span>
+                                <h4>Trần Uyên Phương</h4>
+                                {/* <span>C.E.O</span> */}
                             </div>
                         </div>
-                        <div className='col-lg-3 col-md-6 col-sm-6'>
+                        <div className='col-lg-3 col-md-6 col-sm-6 box_team_item'>
                             <div className='team__item'>
                                 <img src='img/about/team-3.jpg' alt='' />
-                                <h4>Sean Robbins</h4>
-                                <span>Manager</span>
+                                <h4>Huỳnh Lệ San</h4>
+                                {/* <span>Manager</span> */}
                             </div>
                         </div>
                         {/* <div className='col-lg-3 col-md-6 col-sm-6'>
