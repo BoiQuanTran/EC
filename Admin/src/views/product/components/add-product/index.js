@@ -322,7 +322,7 @@ const AddProduct = ({ saveCompleteEvent }) => {
                                     <Divider />
                                 </Grid>
                                 <Grid item xs={12}>
-                                    <Typography variant={'h4'}>Product detail (SKU, Stock, Selling Price, Cost Price, Discounted Price, Image) </Typography>
+                                    <Typography variant={'h4'}>Product detail (SKU, Stock, Cost Price, Selling Price, Discounted Price, Image) </Typography>
                                 </Grid>
 
                                 {state.listProductDetail.map((detail) => {
@@ -330,16 +330,16 @@ const AddProduct = ({ saveCompleteEvent }) => {
                                         <Grid item xs={24} key={detail.id}>
 
                                             <Grid container spacing={2}>
-                                                <Grid item xs={2}>
+                                                <Grid item xs={2.5}>
                                                     <FormControl fullWidth size='small'>
                                                         <OutlinedInput
                                                             type='text'
-                                                            value={'SKU: ' + detail.color.name + '-' + detail.size.name}
+                                                            value={'SKU: ' + detail.color.name + ' - ' + detail.size.name}
                                                             disabled
                                                         />
                                                     </FormControl>
                                                 </Grid>
-                                                <Grid item xs={2}>
+                                                <Grid item xs={1.5}>
                                                     <FormControl fullWidth size='small'>
                                                         <OutlinedInput
                                                             type='number'
@@ -353,22 +353,7 @@ const AddProduct = ({ saveCompleteEvent }) => {
                                                         />
                                                     </FormControl>
                                                 </Grid>
-                                                <Grid item xs={2}>
-                                                    <FormControl fullWidth size='small'>
-                                                        <OutlinedInput
-                                                            type='number'
-                                                            value={detail.exportPrice}
-                                                            onChange={(event) => dispatch(setDataDetail({
-                                                                event,
-                                                                detail,
-                                                                actionType: 'exportPrice'
-                                                            }))}
-                                                            endAdornment={<InputAdornment
-                                                                position='end'>$</InputAdornment>}
-                                                        />
-                                                    </FormControl>
-                                                </Grid>
-                                                <Grid item xs={2}>
+                                                <Grid item xs={1.5}>
                                                     <FormControl fullWidth size='small'>
                                                         <OutlinedInput
                                                             type='number'
@@ -384,7 +369,23 @@ const AddProduct = ({ saveCompleteEvent }) => {
                                                         />
                                                     </FormControl>
                                                 </Grid>
-                                                <Grid item xs={2}>
+                                                <Grid item xs={1.5}>
+                                                    <FormControl fullWidth size='small'>
+                                                        <OutlinedInput
+                                                            type='number'
+                                                            value={detail.exportPrice}
+                                                            onChange={(event) => dispatch(setDataDetail({
+                                                                event,
+                                                                detail,
+                                                                actionType: 'exportPrice'
+                                                            }))}
+                                                            endAdornment={<InputAdornment
+                                                                position='end'>$</InputAdornment>}
+                                                        />
+                                                    </FormControl>
+                                                </Grid>
+                                                
+                                                <Grid item xs={1.5}>
                                                     <FormControl fullWidth size='small'>
                                                         <OutlinedInput
                                                             type='number'

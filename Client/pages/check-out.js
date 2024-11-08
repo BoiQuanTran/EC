@@ -4,16 +4,14 @@ import { PAYMENT_METHOD, SALE_ORDER_STATUS } from '../core/constant';
 import { useEffect, useState } from 'react';
 import CartService from '../services/cart_service';
 import VoucherService from '../services/voucher.service.js';
-// import VoucherService from '../services/voucher.service';
 import randomString from '../core/utils/random-string.js';
 import SaleOrderService from '../services/saleOrder.service';
 import { resetCart } from '../store/feature/UserSlice';
 import { useRouter } from 'next/router';
-import { notifyErrorMessage, notifyWarningMessage } from '../core/utils/notify-action';
+import { notifyErrorMessage, notifyWarningMessage, notifySuccessMessage } from '../core/utils/notify-action';
 
 export default function CheckOut() {
     const user = useSelector((state) => state.user);
-    // const voucher = useSelector((state) => state.voucher);
 
     const [paymentMethod, setPaymentMethod] = useState(PAYMENT_METHOD.COD);
     const [description, setDescription] = useState('');
@@ -59,7 +57,18 @@ export default function CheckOut() {
         setListDetails(details);
 
     };
+    const handleVoucherChange = (e) => {
+        const codeVoucher = e.target.value;
+        setCodeVoucher(codeVoucher);
 
+        if (codeVoucher === '') {
+            setdiscountAmount(0);
+            settotalDiscount(total);
+        } else {
+            setdiscountAmount(discountAmount); 
+            settotalDiscount(totalDiscount);
+        }
+    };
     const handleOnChangePayment = (evt) => {
         const value = evt.target.value;
         if (value === PAYMENT_METHOD.BANKING) {
@@ -71,55 +80,55 @@ export default function CheckOut() {
             setCode(randomString(5));
         }
         setPaymentMethod(value);
-
     };
     const handleVoucher= async (e)=> {
         e.preventDefault()
-        // const DiscountCode = codeVoucher;
-        // console.log(DiscountCode);
+        await getItemsCart(); // Gọi hàm tính tổng giỏ hàng
         if(codeVoucher){
             const data = await VoucherService.getByCode(codeVoucher);
             const res = data.result || [];
-            console.log(res._id);
-            if (res != []) {
-                const expiryDate = new Date(res.endDate); // lấy ngày hết hạn từ dữ liệu API
-                const currentDate = new Date(); // lấy ngày hiện tại
-                if (expiryDate >= currentDate) {
-                    console.log("Voucher hợp lệ");
-                    // Tính tổng giỏ hàng
-                    await applyDiscount(res);
-                } else {
-                    console.log("Voucher đã hết hạn.");
-                }
-            } else {
-                console.log("Voucher không tồn tại.");
+            console.log(res);
+            // if (res != []) {
+            if (!res || res.length === 0) {
+                notifyWarningMessage('Voucher không tồn tại.');
+                return; // Dừng ở đây nếu không tìm thấy voucher
             }
-
-        }
-
+            else {
+                const expiryDate = new Date(res.endDate); // lấy ngày hết hạn từ dữ liệu API
+                const start = new Date(res.startDate);
+                const currentDate = new Date(); // lấy ngày hiện tại
+                
+                if (start <= currentDate){
+                    if (expiryDate > currentDate) {
+                        notifySuccessMessage(`Voucher hợp lệ`);
+                        await applyDiscount(res);
+                    } else {
+                        notifyWarningMessage(`Voucher đã hết hạn.`);
+                    }
+                } else { 
+                    const daysUntilStart = Math.ceil((start - currentDate) / (1000 * 60 * 60 * 24)); // Tính số ngày
+                    notifyWarningMessage(`Voucher sẽ được dùng sau ${daysUntilStart} ngày.`);
+                }
+            }
+        } 
+        // else {
+        //     notifyWarningMessage(`Voucher không tồn tại.`);
+        // }
     };
     const applyDiscount = async (voucher) => {
         // Tính tổng giỏ hàng
-        await getItemsCart(); // Gọi hàm tính tổng giỏ hàng
-        
-        // Áp dụng giảm giá nếu voucher hợp lệ
         let discountAmount = 0;
         if (voucher.condition <= total) {
             // Giảm giá theo phần trăm
             discountAmount = (voucher.percent / 100) * total;
         }
-
         // Đảm bảo tổng giá trị không âm
         let totalDiscount = total - discountAmount;
-        if (totalDiscount < 0) {
-            totalDiscount = 0;
-        }
-    
-        // Cập nhật tổng giá trị sau khi áp voucher
+        if (totalDiscount < 0) {totalDiscount = 0;}
         setdiscountAmount(discountAmount);
         settotalDiscount(totalDiscount);
+        
     };
-    
     const handlePlaceOrder = async (e) => {
         e.preventDefault()
         if (listDetails.length === 0){
@@ -143,7 +152,6 @@ export default function CheckOut() {
         if (codeVoucher){
             const data = await VoucherService.getByCode(codeVoucher);
             const res = data.result || [];
-            // console.log(res._id);
             saleOrderFull.voucher = res._id;
         }
         const data = await SaleOrderService.create(saleOrderFull);
@@ -185,15 +193,13 @@ export default function CheckOut() {
                                         <div className='col-lg-6'>
                                             <div className='checkout__input'>
                                                 <p>Fist Name<span>*</span></p>
-                                                <input type='text' value={firstName}
-                                                       onChange={(e) => setFirstName(e.target.value)} />
+                                                <input type='text' value={firstName} onChange={(e) => setFirstName(e.target.value)} />
                                             </div>
                                         </div>
                                         <div className='col-lg-6'>
                                             <div className='checkout__input'>
                                                 <p>Last Name<span>*</span></p>
-                                                <input type='text' value={lastName}
-                                                       onChange={(e) => setLastName(e.target.value)} />
+                                                <input type='text' value={lastName} onChange={(e) => setLastName(e.target.value)} />
                                             </div>
                                         </div>
                                     </div>
@@ -207,15 +213,13 @@ export default function CheckOut() {
                                         <div className='col-lg-6'>
                                             <div className='checkout__input'>
                                                 <p>Phone<span>*</span></p>
-                                                <input type='text' value={phone}
-                                                       onChange={(e) => setPhone(e.target.value)} />
+                                                <input type='text' value={phone} onChange={(e) => setPhone(e.target.value)} />
                                             </div>
                                         </div>
                                         <div className='col-lg-6'>
                                             <div className='checkout__input'>
                                                 <p>Email<span>*</span></p>
-                                                <input type='text' value={email}
-                                                       onChange={(e) => setEmail(e.target.value)} />
+                                                <input type='text' value={email} onChange={(e) => setEmail(e.target.value)} />
                                             </div>
                                         </div>
                                     </div>
@@ -230,7 +234,7 @@ export default function CheckOut() {
                                         <h6 >Discount codes</h6>
                                         <form action=''>
                                             <input type='text' placeholder='Coupon code' defaultValue='' value={codeVoucher}
-                                                   onChange={(e) => setCodeVoucher(e.target.value)}/>
+                                                   onChange={(e) => handleVoucherChange(e)}/>
                                             <button type='submit' onClick={(e) => handleVoucher(e)}>Apply</button>
                                         </form>
                                     </div>
@@ -247,14 +251,14 @@ export default function CheckOut() {
                                         </ul>
                                         <ul className='checkout__total__all'>
                                             <li>Total <span>${total}</span></li>
-                                            {discountAmount > 0 && (  // Hiển thị discountAmount nếu có
-                                                <li>
-                                                    Discount voucher: <span>-${discountAmount}</span>  {/* Hiển thị số tiền giảm giá */}
-                                                </li>
-                                            )}
-                                            <li>
-                                                Total Payment: <span>${totalDiscount}</span>  {/* Tổng giá trị sau khi áp dụng giảm giá */}
-                                            </li>
+                                            {discountAmount > 0 ? (
+                                                <>
+                                                    <li>Discount voucher: <span>-${discountAmount}</span></li>
+                                                    <li>Total Payment: <span>${totalDiscount}</span></li>
+                                                </>
+                                            ) : (
+                                                <li>Total Payment: <span>${total}</span></li>
+                                            )}                                        
                                         </ul>
                                         {description === '' ? '' : <div style={{ display: 'flex' }}>
                                             <div style={{display: "flex", flexDirection: "column", width: "100%"}}>

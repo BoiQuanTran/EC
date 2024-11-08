@@ -91,11 +91,39 @@ const ProductService = {
     }
     ,
     async updateProduct(product) {
-        // const listDetails = productFull.listDetails;
+        const listDetails = product.listDetails;
+        // Duyệt qua từng phần tử trong listDetails và cập nhật nó dựa trên _id
+        const updatePromises = listDetails.map(detail =>
+            ProductDetail.findByIdAndUpdate(detail._id, detail, { new: true })
+        );
+    
+        // Đợi tất cả các chi tiết được cập nhật
+        const updatedDetails = await Promise.all(updatePromises);
+    
+        // Cập nhật lại sản phẩm với danh sách chi tiết đã được cập nhật
+        product.listDetails = updatedDetails.map(detail => detail._id);
         const result = await Product.findByIdAndUpdate(product._id, product);
         return result;
     }    
     ,
+    // async updateProductDetail(product) {
+    //     const listDetails = product.listDetails;
+    
+    //     // Duyệt qua từng phần tử trong listDetails và cập nhật nó dựa trên _id
+    //     const updatePromises = listDetails.map(detail =>
+    //         ProductDetail.findByIdAndUpdate(detail._id, detail, { new: true })
+    //     );
+    
+    //     // Đợi tất cả các chi tiết được cập nhật
+    //     const updatedDetails = await Promise.all(updatePromises);
+    
+    //     // Cập nhật lại sản phẩm với danh sách chi tiết đã được cập nhật
+    //     product.listDetails = updatedDetails.map(detail => detail._id);
+    //     const result = await Product.findByIdAndUpdate(product._id, product, { new: true });
+    
+    //     return result;
+    // }
+    // ,
     async deleteProduct(productId) {
         const result = await Product.findByIdAndDelete(productId);
         return result;

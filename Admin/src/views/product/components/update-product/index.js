@@ -233,7 +233,7 @@ const UpdateProduct = ({ saveCompleteEvent }) => {
                                                 id='product-supplier'
                                                 onChange={(evt) => dispatch(setSupplierSelected(evt.target.value))}
                                                 input={<OutlinedInput label='Supplier' />}
-                                                defaultValue={state.productFullUpdate.supplier}
+                                                defaultValue={state.productFullUpdate.supplier._id || ''}
                                             >
                                                 {state.listSuppliers.map((supplierItm) => (
                                                     <MenuItem
@@ -367,19 +367,19 @@ const UpdateProduct = ({ saveCompleteEvent }) => {
 
                                     {state.listProductDetail.map((detail) => {
                                         return (
-                                            <Grid item xs={24} key={detail.id}>
+                                            <Grid item xs={12} key={detail.id}>
 
                                                 <Grid container spacing={2}>
-                                                    <Grid item xs={2}>
+                                                    <Grid item xs={2.5}>
                                                         <FormControl fullWidth size='small'>
                                                             <OutlinedInput
                                                                 type='text'
-                                                                value={'SKU: ' + detail.color.name + '-' + detail.size.name}
+                                                                value={'SKU: ' + detail.color.name + ' - ' + detail.size.name}
                                                                 disabled
                                                             />
                                                         </FormControl>
                                                     </Grid>
-                                                    <Grid item xs={2}>
+                                                    <Grid item xs={1.5}>
                                                         <FormControl fullWidth size='small'>
                                                             <OutlinedInput
                                                                 type='number'
@@ -393,22 +393,7 @@ const UpdateProduct = ({ saveCompleteEvent }) => {
                                                             />
                                                         </FormControl>
                                                     </Grid>
-                                                    <Grid item xs={2}>
-                                                        <FormControl fullWidth size='small'>
-                                                            <OutlinedInput
-                                                                type='number'
-                                                                value={detail.exportPrice}
-                                                                onChange={(event) => dispatch(setDataDetail({
-                                                                    event,
-                                                                    detail,
-                                                                    actionType: 'exportPrice'
-                                                                }))}
-                                                                endAdornment={<InputAdornment
-                                                                    position='end'>$</InputAdornment>}
-                                                            />
-                                                        </FormControl>
-                                                    </Grid>
-                                                    <Grid item xs={2}>
+                                                    <Grid item xs={1.5}>
                                                         <FormControl fullWidth size='small'>
                                                             <OutlinedInput
                                                                 type='number'
@@ -424,7 +409,23 @@ const UpdateProduct = ({ saveCompleteEvent }) => {
                                                             />
                                                         </FormControl>
                                                     </Grid>
-                                                    <Grid item xs={2}>
+                                                    <Grid item xs={1.5}>
+                                                        <FormControl fullWidth size='small'>
+                                                            <OutlinedInput
+                                                                type='number'
+                                                                value={detail.exportPrice}
+                                                                onChange={(event) => dispatch(setDataDetail({
+                                                                    event,
+                                                                    detail,
+                                                                    actionType: 'exportPrice'
+                                                                }))}
+                                                                endAdornment={<InputAdornment
+                                                                    position='end'>$</InputAdornment>}
+                                                            />
+                                                        </FormControl>
+                                                    </Grid>
+                                                    
+                                                    <Grid item xs={1.5}>
                                                         <FormControl fullWidth size='small'>
                                                             <OutlinedInput
                                                                 type='number'
