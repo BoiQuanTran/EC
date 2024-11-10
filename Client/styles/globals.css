@@ -2474,7 +2474,28 @@ ol {
     top: 0;
     height: 100%;
 }
-
+.cart__discount ul{
+    padding: 10px;
+    display: flex;
+    gap: 10px; 
+}
+.cart__discount ul p{
+    font-size: 13px;
+    color: #333;
+    font-style: italic;            /* In nghiêng */
+    opacity: 0.7; 
+}
+.cart__discount ul li{
+    list-style-type: none;
+    height: fit-content;
+    padding-right: 10px;
+    font-size: 13px;
+    color: #333;
+    font-style: italic;            /* In nghiêng */
+    opacity: 0.7;                  /* Làm mờ chữ */
+    white-space: nowrap;
+    /* border-right: 1px solid black; */
+}
 .cart__total {
     background: #f3f2ee;
     padding: 35px 40px 40px;

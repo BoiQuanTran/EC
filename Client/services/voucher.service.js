@@ -13,7 +13,9 @@ const VoucherService = {
     },
     getByCode: (code) => {
         return axiosClient.get(`/voucher/getByCode/${code}`)
+    },
+    getValidVouchers: () => {
+        return axiosClient.get(`/voucher/getValidVouchers`)
     }
-
 };
 export default VoucherService;

@@ -29,7 +29,15 @@ const VoucherController = {
             res.status(500).json(new ResponseModel(500, ['Invalid voucher code!'], null));
         }
     },
-
+    async getValidVouchers(req, res, next){
+        try {
+            const result = await VoucherService.getValidVouchers();
+            // console.log(req.total);
+            return res.status(200).json(new ResponseModel(200, [], result));
+        } catch (e) {
+            res.status(500).json(new ResponseModel(500, ['Invalid voucher code1!'], null));
+        }
+    },
     async getFullById(req, res, next) {
         const result = await VoucherService.getFullById(req.params.id);
         return res.status(200).json(new ResponseModel(200, [], result));

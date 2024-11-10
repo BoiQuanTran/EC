@@ -24,7 +24,9 @@ export default function CheckOut() {
     const [total, setTotal] = useState(0);
     const [listDetails, setListDetails] = useState([]);
     const [code, setCode] = useState('');
+
     const [codeVoucher, setCodeVoucher] = useState('');
+    const [validVoucher, setvalidVoucher] = useState('');
     const [discountAmount, setdiscountAmount] = useState(0);
     const [totalDiscount, settotalDiscount] = useState(0);
 
@@ -33,6 +35,7 @@ export default function CheckOut() {
 
     useEffect(() => {
         getItemsCart();
+        handleValidVoucher();
         setCode(randomString(5));
     }, []);
 
@@ -56,6 +59,10 @@ export default function CheckOut() {
         setTotal(totalCreated);
         setListDetails(details);
 
+    };
+    const handleValidVoucher = async () => {
+        const v = await VoucherService.getValidVouchers();
+        setvalidVoucher(v.result);
     };
     const handleVoucherChange = (e) => {
         const codeVoucher = e.target.value;
@@ -84,36 +91,26 @@ export default function CheckOut() {
     const handleVoucher= async (e)=> {
         e.preventDefault()
         await getItemsCart(); // Gọi hàm tính tổng giỏ hàng
-        if(codeVoucher){
+        let discountAmount = 0;
+        const isValidVoucher = validVoucher.some(voucher => voucher.code === codeVoucher);
+        if(isValidVoucher){
             const data = await VoucherService.getByCode(codeVoucher);
             const res = data.result || [];
-            console.log(res);
-            // if (res != []) {
-            if (!res || res.length === 0) {
-                notifyWarningMessage('Voucher không tồn tại.');
-                return; // Dừng ở đây nếu không tìm thấy voucher
+            if (res.condition <= total) {
+                notifySuccessMessage(`Voucher is valid`);
+                discountAmount = (res.percent / 100) * total;
+            } else {
+                notifyWarningMessage(`Not qualified to use the voucher`);
             }
-            else {
-                const expiryDate = new Date(res.endDate); // lấy ngày hết hạn từ dữ liệu API
-                const start = new Date(res.startDate);
-                const currentDate = new Date(); // lấy ngày hiện tại
-                
-                if (start <= currentDate){
-                    if (expiryDate > currentDate) {
-                        notifySuccessMessage(`Voucher hợp lệ`);
-                        await applyDiscount(res);
-                    } else {
-                        notifyWarningMessage(`Voucher đã hết hạn.`);
-                    }
-                } else { 
-                    const daysUntilStart = Math.ceil((start - currentDate) / (1000 * 60 * 60 * 24)); // Tính số ngày
-                    notifyWarningMessage(`Voucher sẽ được dùng sau ${daysUntilStart} ngày.`);
-                }
-            }
-        } 
-        // else {
-        //     notifyWarningMessage(`Voucher không tồn tại.`);
-        // }
+            // Đảm bảo tổng giá trị không âm
+            let totalDiscount = total - discountAmount;
+            if (totalDiscount < 0) {totalDiscount = 0;}
+            setdiscountAmount(discountAmount);
+            settotalDiscount(totalDiscount);
+        }else {
+            notifyWarningMessage('Voucher does not exist');
+        }
+        
     };
     const applyDiscount = async (voucher) => {
         // Tính tổng giỏ hàng
@@ -237,6 +234,17 @@ export default function CheckOut() {
                                                    onChange={(e) => handleVoucherChange(e)}/>
                                             <button type='submit' onClick={(e) => handleVoucher(e)}>Apply</button>
                                         </form>
+                                        {/* <h2>Danh sách mã voucher có hiệu lực</h2> */}
+                                        <ul>
+                                            <p>Voucher:</p>
+                                            {validVoucher.length > 0 ? (
+                                                validVoucher.map(voucher => (
+                                                    <li key={voucher._id}>{voucher.code}</li>
+                                                ))
+                                            ) : (
+                                                <p>Không có voucher nào đang có hiệu lực.</p>
+                                            )}
+                                        </ul>
                                     </div>
                                     <div className='checkout__order'>
                                         <h4 className='order__title'>Your order</h4>

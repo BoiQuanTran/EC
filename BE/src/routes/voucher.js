@@ -19,4 +19,6 @@ route.get('/get/:id', VoucherController.getById);
 
 route.get('/getByCode/:code', VoucherController.getByCode);
 
+route.get('/getValidVouchers', VoucherController.getValidVouchers);
+
 export default route;

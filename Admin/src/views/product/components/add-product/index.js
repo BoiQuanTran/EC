@@ -322,7 +322,7 @@ const AddProduct = ({ saveCompleteEvent }) => {
                                     <Divider />
                                 </Grid>
                                 <Grid item xs={12}>
-                                    <Typography variant={'h4'}>Product detail (SKU, Stock, Cost Price, Selling Price, Discounted Price, Image) </Typography>
+                                    <Typography variant={'h4'}>Product detail (Color, Size, Stock, Cost Price, Selling Price, Discounted Price, Image) </Typography>
                                 </Grid>
 
                                 {state.listProductDetail.map((detail) => {

@@ -12,12 +12,23 @@ const VoucherService = {
         return voucher;
     }
     ,
-    
     async getByCode(code){
         const voucher = await Voucher.findOne({code: code});
         return voucher;
     },
-
+    async getValidVouchers() {
+        try {
+            // Giả sử voucher có ngày hết hạn và cờ isValid
+            const validVouchers = await Voucher.find({ 
+                startDate: { $lte: new Date() },
+                endDate: { $gte: new Date() } // Chỉ lấy voucher chưa hết hạn
+            });
+            return validVouchers;
+        } catch (err) {
+            console.error("Lỗi khi lấy voucher:", err);
+            return [];
+        }
+    },
     async createVoucher(voucher) {
 
         const voucherSchema = new Voucher({

@@ -362,7 +362,7 @@ const UpdateProduct = ({ saveCompleteEvent }) => {
                                         <Divider />
                                     </Grid>
                                     <Grid item xs={12}>
-                                        <Typography variant={'h4'}> Product detail (SKU, Stock, Cost Price, Selling Price, Discounted Price, Image) </Typography>
+                                        <Typography variant={'h4'}> Product detail (Color, Size, Stock, Cost Price, Selling Price, Discounted Price, Image) </Typography>
                                     </Grid>
 
                                     {state.listProductDetail.map((detail) => {
@@ -443,7 +443,7 @@ const UpdateProduct = ({ saveCompleteEvent }) => {
                                                             />
                                                         </FormControl>
                                                     </Grid>
-                                                    <Grid container item xs={1.5} spacing={2}>
+                                                    <Grid container item xs={2} spacing={2}>
                                                         <Grid item xs={6}>
                                                             <IconButton color='primary' aria-label='upload picture'
                                                                         component='label'>
