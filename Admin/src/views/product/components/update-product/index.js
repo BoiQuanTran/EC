@@ -368,13 +368,21 @@ const UpdateProduct = ({ saveCompleteEvent }) => {
                                     {state.listProductDetail.map((detail) => {
                                         return (
                                             <Grid item xs={12} key={detail.id}>
-
-                                                <Grid container spacing={2}>
-                                                    <Grid item xs={2.5}>
+                                                <Grid container spacing={3}>
+                                                    <Grid item xs={1.5}>
                                                         <FormControl fullWidth size='small'>
                                                             <OutlinedInput
                                                                 type='text'
-                                                                value={'SKU: ' + detail.color.name + ' - ' + detail.size.name}
+                                                                placeholder={detail.color.name}
+                                                                disabled
+                                                            />
+                                                        </FormControl>
+                                                    </Grid>
+                                                    <Grid item xs={1.5}>
+                                                        <FormControl fullWidth size='small'>
+                                                            <OutlinedInput
+                                                                type='text'
+                                                                placeholder={detail.size.name}
                                                                 disabled
                                                             />
                                                         </FormControl>
@@ -389,7 +397,6 @@ const UpdateProduct = ({ saveCompleteEvent }) => {
                                                                     detail,
                                                                     actionType: 'stock'
                                                                 }))}
-
                                                             />
                                                         </FormControl>
                                                     </Grid>
@@ -403,9 +410,7 @@ const UpdateProduct = ({ saveCompleteEvent }) => {
                                                                     detail,
                                                                     actionType: 'importPrice'
                                                                 }))}
-
-                                                                endAdornment={<InputAdornment
-                                                                    position='end'>$</InputAdornment>}
+                                                                endAdornment={<InputAdornment position='end'>$</InputAdornment>}
                                                             />
                                                         </FormControl>
                                                     </Grid>
@@ -419,8 +424,7 @@ const UpdateProduct = ({ saveCompleteEvent }) => {
                                                                     detail,
                                                                     actionType: 'exportPrice'
                                                                 }))}
-                                                                endAdornment={<InputAdornment
-                                                                    position='end'>$</InputAdornment>}
+                                                                endAdornment={<InputAdornment position='end'>$</InputAdornment>}
                                                             />
                                                         </FormControl>
                                                     </Grid>
@@ -435,12 +439,11 @@ const UpdateProduct = ({ saveCompleteEvent }) => {
                                                                     detail,
                                                                     actionType: 'salePrice'
                                                                 }))}
-                                                                endAdornment={<InputAdornment
-                                                                    position='end'>$</InputAdornment>}
+                                                                endAdornment={<InputAdornment position='end'>$</InputAdornment>}
                                                             />
                                                         </FormControl>
                                                     </Grid>
-                                                    <Grid container item xs={2} spacing={2}>
+                                                    <Grid container item xs={1.5} spacing={2}>
                                                         <Grid item xs={6}>
                                                             <IconButton color='primary' aria-label='upload picture'
                                                                         component='label'>
@@ -460,18 +463,12 @@ const UpdateProduct = ({ saveCompleteEvent }) => {
                                                                 borderRadius: appUI.borderRadius
                                                             }} />
                                                         </Grid>
-
                                                     </Grid>
-
                                                 </Grid>
                                             </Grid>
-
                                         );
                                     })}
-
-
                                 </Grid>
-
                             </DialogContent>
                             <DialogActions sx={{ justifyContent: 'space-between', marginTop: 2 }}>
                                 <Button onClick={handleClose}>Cancel</Button>

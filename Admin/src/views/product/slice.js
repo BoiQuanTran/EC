@@ -112,28 +112,28 @@ export const ProductSlice = createSlice({
         },
         setDataDetail: (state, action) => {
             const { event, detail, actionType } = action.payload;
-            state.listProductDetail.forEach(item => {
-                if (item.id === detail.id) {
-                    switch (actionType) {
-                        case 'stock':
-                            item.stock = event.target.value;
-                            break;
-                        case 'exportPrice':
-                            item.exportPrice = event.target.value;
-                            break;
-                        case 'importPrice':
-                            item.importPrice = event.target.value;
-                            break;
-                        case 'salePrice':
-                            item.salePrice = event.target.value;
-                            break;
-                        case 'image':
-                            item.image = event;
-                            break;
-                    }
-                    return false;
+            const productDetail = state.listProductDetail.find(item => item.id === detail.id);
+            if (productDetail) {
+                switch (actionType) {
+                    case 'stock':
+                        productDetail.stock = event.target.value;
+                        break;
+                    case 'exportPrice':
+                        productDetail.exportPrice = event.target.value;
+                        break;
+                    case 'importPrice':
+                        productDetail.importPrice = event.target.value;
+                        break;
+                    case 'salePrice':
+                        productDetail.salePrice = event.target.value;
+                        break;
+                    case 'image':
+                        productDetail.image = event.target.value;
+                        break;
+                    default:
                 }
-            });
+               
+            };
         },
         requestSort: (state, action) => {
             const property = action.payload;

@@ -330,11 +330,20 @@ const AddProduct = ({ saveCompleteEvent }) => {
                                         <Grid item xs={24} key={detail.id}>
 
                                             <Grid container spacing={2}>
-                                                <Grid item xs={2.5}>
+                                                <Grid item xs={1.5}>
                                                     <FormControl fullWidth size='small'>
                                                         <OutlinedInput
                                                             type='text'
-                                                            value={'SKU: ' + detail.color.name + ' - ' + detail.size.name}
+                                                            placeholder={detail.color.name}
+                                                            disabled
+                                                        />
+                                                    </FormControl>
+                                                </Grid>
+                                                <Grid item xs={1.5}>
+                                                    <FormControl fullWidth size='small'>
+                                                        <OutlinedInput
+                                                            type='text'
+                                                            placeholder={detail.size.name}
                                                             disabled
                                                         />
                                                     </FormControl>

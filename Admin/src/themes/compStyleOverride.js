@@ -111,7 +111,7 @@ export default function componentStyleOverrides(theme) {
                         borderColor: theme.colors?.primaryLight
                     },
                     '&.MuiInputBase-multiline': {
-                        padding: 1
+                        padding: 0.5
                     }
                 },
                 input: {
@@ -120,7 +120,7 @@ export default function componentStyleOverrides(theme) {
                     padding: '15.5px 14px',
                     borderRadius: `${theme?.customization?.borderRadius}px`,
                     '&.MuiInputBase-inputSizeSmall': {
-                        padding: '10px 14px',
+                        padding: '10px',
                         '&.MuiInputBase-inputAdornedStart': {
                             paddingLeft: 0
                         }

@@ -13,7 +13,7 @@ const AuthController = {
         try {
             const response = await AuthService.checkLogin(req.body, res);
             if (response) {
-                res.cookie('refreshTokenMaleFashionShop', response.result.refreshToken, {
+                res.cookie('refreshTokenMEOWEyewearShop', response.result.refreshToken, {
                     httpOnly: true,
                     secure: false,
                     path: '/',
@@ -42,7 +42,7 @@ const AuthController = {
         try {
             const response = await AuthService.refreshToken(req, res);
             if (response) {
-                res.cookie('refreshTokenMaleFashionShop', response.newRefreshToken, {
+                res.cookie('refreshTokenMEOWEyewearShop', response.newRefreshToken, {
                     httpOnly: true,
                     secure: false,
                     path: '/',
