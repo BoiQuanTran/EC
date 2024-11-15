@@ -35,7 +35,7 @@ const VoucherController = {
             // console.log(req.total);
             return res.status(200).json(new ResponseModel(200, [], result));
         } catch (e) {
-            res.status(500).json(new ResponseModel(500, ['Invalid voucher code1!'], null));
+            res.status(500).json(new ResponseModel(500, ['No available voucher'], null));
         }
     },
     async getFullById(req, res, next) {

@@ -17,15 +17,13 @@ const MainRoutes = {
     element: <MainLayout />,
     children: [
         {
-            path: '/',
-            element: <Dashboard />
+            path: '/', element: <Dashboard />
         },
         {
             path: 'product',
             children: [
                 {
-                    path: '',
-                    element: <ProductMain />
+                    path: '', element: <ProductMain />
                 }
             ]
         },
@@ -33,8 +31,7 @@ const MainRoutes = {
             path: 'product',
             children: [
                 {
-                    path: 'color',
-                    element: <Color />
+                    path: 'color', element: <Color />
                 }
             ]
         },

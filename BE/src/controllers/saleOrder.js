@@ -28,6 +28,14 @@ const SaleOrderController = {
             res.status(500).json(new ResponseModel(500, ['Error retrieving sale order information!'], null));
         }
     },
+    async getById1(req, res, next) {
+        try {
+            const result = await SaleOrderService.getById1(req.params.id);
+            return res.status(200).json(new ResponseModel(200, [], result));
+        } catch (e) {
+            res.status(500).json(new ResponseModel(500, ['Error retrieving sale order information!'], null));
+        }
+    },
     async getFullById(req, res, next) {
         try {
             const result = await SaleOrderService.getFullById(req.params.id);

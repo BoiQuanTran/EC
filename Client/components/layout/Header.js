@@ -54,7 +54,7 @@ export default function Header() {
                                                 <a href='/userprofile'>My Account</a>
                                             </li>
                                             <li className='header__navbar-user-item'>
-                                                <a href='/history-order'>History Order</a>
+                                                <a href='/history-order'>Order History</a>
                                             </li>
                                             <li className='header__navbar-user-item header__navbar-user-item--separate'>
                                                 <a href='' onClick={handleLogout}>Log Out</a>

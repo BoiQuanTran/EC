@@ -11,6 +11,7 @@ import { Avatar, Grid, IconButton, Typography } from '@mui/material';
 import * as Yup from 'yup';
 import { Formik } from 'formik';
 import CustomerService from '../../../../services/customer.service';
+import SaleOrderService from '../../../../services/sale-order.service';
 import { PhotoCamera } from '@mui/icons-material';
 import LoadingSpinner from '../../../../ui-component/loading';
 import { convertBase64 } from '../../../../core/utils/base64';
@@ -18,12 +19,12 @@ import { notifyErrorMessage } from '../../../../core/utils/notify-action';
 
 const UpdateCustomer = ({ saveCompleteEvent }) => {
     const [customerOld, setCustomerOld] = useState(undefined);
+    const [orders, setOrders] = useState([]);
     const state = useSelector(state => state.customer);
     const dispatch = useDispatch();
     useEffect(() => {
         getCustomerById();
     }, [state.selected[0]]);
-
     const getCustomerById = async () => {
         if (state.selected[0]) {
             const data = await CustomerService.getById(state.selected[0]);
@@ -33,7 +34,6 @@ const UpdateCustomer = ({ saveCompleteEvent }) => {
                 dispatch(closeUpdateCustomer());
             }
         }
-
     };
     const handleClose = () => {
         dispatch(closeUpdateCustomer());
@@ -66,7 +66,7 @@ const UpdateCustomer = ({ saveCompleteEvent }) => {
 
         <Dialog open={state.updateCustomer} onClose={handleClose}>
             <Typography variant={'h3'} margin={2}>Update Customer Information</Typography>
-            {!customerOld ? <LoadingSpinner /> :
+            {!customerOld ? <LoadingSpinner /> : (
                 <Formik
                     initialValues={{
                         firstName: customerOld.firstName,
@@ -97,8 +97,8 @@ const UpdateCustomer = ({ saveCompleteEvent }) => {
                                         <IconButton color='primary' aria-label='upload picture'
                                                     component='label'>
                                             <input hidden accept='image/*'
-                                                   onChange={handleChangeMainImage}
-                                                   type='file' />
+                                                onChange={handleChangeMainImage}
+                                                type='file' />
                                             <Avatar
                                                 src={customerOld.avatar}
                                                 style={{
@@ -113,70 +113,70 @@ const UpdateCustomer = ({ saveCompleteEvent }) => {
                                     </Grid>
                                     <Grid item xs={6}>
                                         <TextField fullWidth
-                                                   value={values.firstName}
-                                                   onChange={handleChange}
-                                                   label='First name'
-                                                   name='firstName'
-                                                   size='small'
+                                                value={values.firstName}
+                                                onChange={handleChange}
+                                                label='First name'
+                                                name='firstName'
+                                                size='small'
                                         />
                                     </Grid>
                                     <Grid item xs={6}>
                                         <TextField fullWidth
-                                                   value={values.lastName}
-                                                   onChange={handleChange}
-                                                   label='Last name'
-                                                   name='lastName'
-                                                   size='small'
+                                                value={values.lastName}
+                                                onChange={handleChange}
+                                                label='Last name'
+                                                name='lastName'
+                                                size='small'
                                         />
                                     </Grid>
                                     <Grid item xs={6}>
                                         <TextField fullWidth
-                                                   value={values.email}
-                                                   onChange={handleChange}
-                                                   label='Email'
-                                                   name='email'
-                                                   size='small'
-                                                   autocomplete='off'
+                                                value={values.email}
+                                                onChange={handleChange}
+                                                label='Email'
+                                                name='email'
+                                                size='small'
+                                                autocomplete='off'
                                         />
                                     </Grid>
                                     <Grid item xs={6}>
                                         <TextField fullWidth
-                                                   value={values.phone}
-                                                   onChange={handleChange}
-                                                   label='Phone number'
-                                                   name='phone'
-                                                   size='small'
-                                                   autocomplete='off'
+                                                value={values.phone}
+                                                onChange={handleChange}
+                                                label='Phone number'
+                                                name='phone'
+                                                size='small'
+                                                autocomplete='off'
                                         />
                                     </Grid>
                                     <Grid item xs={12}>
                                         <TextField fullWidth
-                                                   value={values.address}
-                                                   onChange={handleChange}
-                                                   label='Address'
-                                                   name='address'
-                                                   size='small'
+                                                value={values.address}
+                                                onChange={handleChange}
+                                                label='Address'
+                                                name='address'
+                                                size='small'
                                         />
                                     </Grid>
                                     <Grid item xs={6}>
                                         <TextField fullWidth
-                                                   value={values.birthday}
-                                                   onChange={handleChange}
-                                                   label='Birthday'
-                                                   name='birthday'
-                                                   size='small'
-                                                   type={'date'}
+                                                value={values.birthday}
+                                                onChange={handleChange}
+                                                label='Birthday'
+                                                name='birthday'
+                                                size='small'
+                                                type={'date'}
                                         />
                                     </Grid>
                                     <Grid item xs={6}>
                                         <TextField fullWidth
-                                                   value={values.password}
-                                                   onChange={handleChange}
-                                                   label='Password'
-                                                   name='password'
-                                                   size='small'
-                                                   type={'password'}
-                                                   autocomplete='off'
+                                                value={values.password}
+                                                onChange={handleChange}
+                                                label='Password'
+                                                name='password'
+                                                size='small'
+                                                type={'password'}
+                                                autocomplete='off'
                                         />
                                     </Grid>
                                 </Grid>
@@ -187,7 +187,8 @@ const UpdateCustomer = ({ saveCompleteEvent }) => {
                             </DialogActions>
                         </form>
                     )}
-                </Formik>}
+                </Formik>
+            )}
         </Dialog>
 
     );

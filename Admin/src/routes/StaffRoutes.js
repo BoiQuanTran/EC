@@ -12,25 +12,19 @@ const StaffRoutes = {
     element: <MainLayout />,
     children: [
         {
-            path: 'customer',
-            element: <Customer />
-        },
-
-        {
-            path: 'sale-order',
-            element: <SaleOrder />
+            path: 'customer', element: <Customer />
         },
         {
-            path: 'buy-order',
-            element: <BuyOrder />
+            path: 'sale-order', element: <SaleOrder />
         },
-
         {
-            path: 'supplier',
-            element: <Supplier />
+            path: 'buy-order', element: <BuyOrder />
+        },
+        {
+            path: 'supplier', element: <Supplier />
         }
-
     ]
 };
 
 export default StaffRoutes;
+

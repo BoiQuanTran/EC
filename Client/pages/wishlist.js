@@ -50,14 +50,13 @@ export default function Home() {
                                     <tr>
                                         <th>Product</th>
                                         <th>Price</th>
-                                        {/* <th/> */}
                                     </tr>
                                     </thead>
                                     <tbody>
                                         {products.map((item) => (
-
-                                            <WishlistItems deleteWishlist={deleteWishlist}  product={item.product}
-                                                        key={item.product._id} />
+                                            <WishlistItems deleteWishlist={deleteWishlist}  
+                                                           product={item.product}
+                                                           key={item.product._id} />
                                         ))}
 
                                     </tbody>

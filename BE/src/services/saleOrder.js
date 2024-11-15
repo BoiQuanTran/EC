@@ -63,9 +63,7 @@ const SaleOrderService = {
             });
             const resultDetail = await SaleOrderDetail.insertMany(saleOrderDetails);
             if (resultDetail) {
-                const carts =
-                    (await Cart.find({ customer: mongoose.Types.ObjectId(saleOrder.customer) })) ||
-                    [];
+                const carts = (await Cart.find({ customer: mongoose.Types.ObjectId(saleOrder.customer) })) || [];
                 const cartIds = [];
                 carts.forEach((cart) => {
                     cartIds.push(cart._id);

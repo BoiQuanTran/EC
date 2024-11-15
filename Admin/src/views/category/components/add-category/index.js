@@ -26,7 +26,6 @@ const AddCategory = ({ saveCompleteEvent }) => {
     };
 
     return (
-
         <Dialog open={state.addCategory} onClose={handleClose}>
             <Typography variant={'h3'} margin={2}>Add New Category</Typography>
             <Formik
@@ -56,7 +55,6 @@ const AddCategory = ({ saveCompleteEvent }) => {
                     </form>
                 )}
             </Formik>
-
         </Dialog>
 
     );

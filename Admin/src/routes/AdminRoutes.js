@@ -15,54 +15,26 @@ const AdminRoutes = {
     element: <MainLayout />,
     children: [
         {
-            path: '/',
-            element: <Dashboard />
+            path: '/', element: <Dashboard />
         },
         {
-            path: 'product',
-            children: [
-                {
-                    path: '',
-                    element: <ProductMain />
-                }
-            ]
+            path: 'product', children: [{ path: '', element: <ProductMain /> }]
         },
         {
-            path: 'product',
-            children: [
-                {
-                    path: 'color',
-                    element: <Color />
-                }
-            ]
+            path: 'product', children: [{ path: 'color', element: <Color /> }]
         },
         {
-            path: 'product',
-            children: [
-                {
-                    path: 'size',
-                    element: <Size />
-                }
-            ]
+            path: 'product', children: [{ path: 'size', element: <Size /> }]
         },
         {
-            path: 'product',
-            children: [
-                {
-                    path: 'category',
-                    element: <Category />
-                }
-            ]
+            path: 'product', children: [{ path: 'category', element: <Category /> }]
         },
         {
-            path: 'voucher',
-            element: <Voucher />
+            path: 'voucher', element: <Voucher />
         },
         {
-            path: 'staff',
-            element: <Staff />
+            path: 'staff', element: <Staff />
         }
-
     ]
 };
 

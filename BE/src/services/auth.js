@@ -49,7 +49,7 @@ const AuthService = {
     async refreshToken(req, res) {
         let newAccessToken = '';
         let newRefreshToken = '';
-        const refreshToken = req.cookies.refreshTokenMaleFashionShop;
+        const refreshToken = req.cookies.refreshTokenEyewearStore;
 
         if (!refreshToken) {
             return res.status(401).json(new ResponseModel(401, ['Login session expired, please log in again!'], null));
@@ -71,7 +71,7 @@ const AuthService = {
     }
     ,
     async logout(req, res) {
-        res.clearCookie('refreshTokenMaleFashionShop');
+        res.clearCookie('refreshTokenEyewearStore');
         return new ResponseModel(200, ['logout success']);
     },
 

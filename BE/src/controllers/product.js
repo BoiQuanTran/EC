@@ -87,7 +87,6 @@ const ProductController = {
     async update(req, res, next) {
         try {
             const result = await ProductService.updateProduct(req.body);
-            // const result_detail = await ProductService.updateProductDetail(req.body);
             return res.status(200).json(new ResponseModel(200, ['Sửa sản phẩm thành công'], {result}));
         } catch (e) {
             console.log(e);

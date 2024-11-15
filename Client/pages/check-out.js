@@ -90,7 +90,7 @@ export default function CheckOut() {
     };
     const handleVoucher= async (e)=> {
         e.preventDefault()
-        await getItemsCart(); // Gọi hàm tính tổng giỏ hàng
+        await getItemsCart();
         let discountAmount = 0;
         const isValidVoucher = validVoucher.some(voucher => voucher.code === codeVoucher);
         if(isValidVoucher){
@@ -100,9 +100,9 @@ export default function CheckOut() {
                 notifySuccessMessage(`Voucher is valid`);
                 discountAmount = (res.percent / 100) * total;
             } else {
-                notifyWarningMessage(`Not qualified to use the voucher`);
+                notifyWarningMessage(`The voucher is not eligible for use
+                                    \n Eligibility requirements: the order must be over $${res.condition}.`);
             }
-            // Đảm bảo tổng giá trị không âm
             let totalDiscount = total - discountAmount;
             if (totalDiscount < 0) {totalDiscount = 0;}
             setdiscountAmount(discountAmount);
@@ -110,21 +110,6 @@ export default function CheckOut() {
         }else {
             notifyWarningMessage('Voucher does not exist');
         }
-        
-    };
-    const applyDiscount = async (voucher) => {
-        // Tính tổng giỏ hàng
-        let discountAmount = 0;
-        if (voucher.condition <= total) {
-            // Giảm giá theo phần trăm
-            discountAmount = (voucher.percent / 100) * total;
-        }
-        // Đảm bảo tổng giá trị không âm
-        let totalDiscount = total - discountAmount;
-        if (totalDiscount < 0) {totalDiscount = 0;}
-        setdiscountAmount(discountAmount);
-        settotalDiscount(totalDiscount);
-        
     };
     const handlePlaceOrder = async (e) => {
         e.preventDefault()
@@ -234,7 +219,6 @@ export default function CheckOut() {
                                                    onChange={(e) => handleVoucherChange(e)}/>
                                             <button type='submit' onClick={(e) => handleVoucher(e)}>Apply</button>
                                         </form>
-                                        {/* <h2>Danh sách mã voucher có hiệu lực</h2> */}
                                         <ul>
                                             <p>Voucher:</p>
                                             {validVoucher.length > 0 ? (
@@ -242,7 +226,7 @@ export default function CheckOut() {
                                                     <li key={voucher._id}>{voucher.code}</li>
                                                 ))
                                             ) : (
-                                                <p>Không có voucher nào đang có hiệu lực.</p>
+                                                <p>No available voucher</p>
                                             )}
                                         </ul>
                                     </div>

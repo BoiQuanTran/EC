@@ -126,65 +126,41 @@ const AddProduct = ({ saveCompleteEvent }) => {
                         <DialogContent>
                             <Grid container spacing={2}>
                                 <Grid item xs={6}>
-                                    <FormControl fullWidth size='small' error={Boolean(touched.name && errors.name)}
-                                    >
+                                    <FormControl fullWidth size='small' error={Boolean(touched.name && errors.name)}>
                                         <InputLabel htmlFor='product-name'>Product name</InputLabel>
                                         <OutlinedInput
-                                            id='product-name'
-                                            type='text'
-                                            value={values.name}
-                                            name='name'
-                                            onBlur={handleBlur}
-                                            onChange={handleChange}
-                                            label='Product name'
+                                            id='product-name' type='text' name='name' label='Product name'
+                                            value={values.name} onBlur={handleBlur} onChange={handleChange} 
                                         />
                                     </FormControl>
                                 </Grid>
                                 <Grid item xs={6}>
-                                    <FormControl fullWidth size='small' error={Boolean(touched.code && errors.code)}
-                                    >
+                                    <FormControl fullWidth size='small' error={Boolean(touched.code && errors.code)}>
                                         <InputLabel htmlFor='product-code'>Code</InputLabel>
                                         <OutlinedInput
-                                            id='product-code'
-                                            type='text'
-                                            value={values.code}
-                                            name='code'
-                                            onBlur={handleBlur}
-                                            onChange={handleChange}
-                                            label='Code'
+                                            id='product-code' type='text' name='code' label='Code'
+                                            value={values.code} onBlur={handleBlur} onChange={handleChange}
                                         />
                                     </FormControl>
                                 </Grid>
 
                                 <Grid item xs={3}>
-                                    <FormControl fullWidth size='small'
-                                                 error={Boolean(touched.exportPrice && errors.exportPrice)}
-                                    >
+                                    <FormControl fullWidth size='small' error={Boolean(touched.exportPrice && errors.exportPrice)}>
                                         <InputLabel htmlFor='product-export'>Selling Price</InputLabel>
                                         <OutlinedInput
-                                            type='number'
-                                            value={values.exportPrice}
-                                            name='exportPrice'
-                                            onBlur={handleBlur}
-                                            onChange={handleChange}
+                                            label='Selling Price' name='exportPrice' type='number' 
+                                            value={values.exportPrice} onBlur={handleBlur} onChange={handleChange}
                                             endAdornment={<InputAdornment position='end'>$</InputAdornment>}
-                                            label='Selling Price'
                                         />
                                     </FormControl>
                                 </Grid>
                                 <Grid item xs={3}>
-                                    <FormControl size='small' fullWidth
-                                                 error={Boolean(touched.salePrice && errors.salePrice)}
-                                    >
+                                    <FormControl size='small' fullWidth error={Boolean(touched.salePrice && errors.salePrice)} >
                                         <InputLabel htmlFor='product-sale'>Discounted Price</InputLabel>
                                         <OutlinedInput
-                                            type='number'
-                                            value={values.salePrice}
-                                            name='salePrice'
-                                            onBlur={handleBlur}
-                                            onChange={handleChange}
+                                            type='number' name='salePrice' label='Discounted Price'
+                                            value={values.salePrice} onBlur={handleBlur} onChange={handleChange}
                                             endAdornment={<InputAdornment position='end'>$</InputAdornment>}
-                                            label='Discounted Price'
                                         />
                                     </FormControl>
                                 </Grid>
@@ -232,11 +208,8 @@ const AddProduct = ({ saveCompleteEvent }) => {
                                     <FormControl fullWidth size='small'>
                                         <InputLabel id='product-badge'>Label</InputLabel>
                                         <Select
-                                            labelId='product-badge'
-                                            value={values.bagde}
-                                            label='Label'
-                                            onChange={handleChange}
-                                            name='badge'
+                                            labelId='product-badge' label='Label' name='badge'
+                                            value={values.bagde} onChange={handleChange}
                                             defaultValue={BADGE_PRODUCT.NOTTHING}
                                         >
                                             <MenuItem value={BADGE_PRODUCT.SALE}>Sale</MenuItem>
@@ -248,11 +221,10 @@ const AddProduct = ({ saveCompleteEvent }) => {
                                 </Grid>
                                 <Grid container item xs={2} spacing={2}>
                                     <Grid item xs={6}>
-                                        <IconButton color='primary' aria-label='upload picture'
-                                                    component='label'>
-                                            <input hidden accept='image/*'
+                                        <IconButton color='primary' aria-label='upload picture' component='label'>
+                                            <input hidden accept='image/*' type='file'
                                                    onChange={handleChangeMainImage}
-                                                   type='file' />
+                                            />
                                             <PhotoCamera />
                                         </IconButton>
 

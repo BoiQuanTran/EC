@@ -7,7 +7,7 @@ export default function Delivery() {
             <div className='map'>
                 <iframe
                     width='600'
-                    height='450'
+                    height='300'
                     style={{ border: 0 }}
                     loading='lazy'
                     allowFullScreen

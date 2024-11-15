@@ -89,7 +89,10 @@ export default function Cart() {
                                     </thead>
                                     <tbody>
                                     {itemsCart.map((item) => (
-                                        <CartItems key={item._id} itemCart={item} saveComplete={getItemsCart} getItemsCart={getItemsCart} />
+                                        <CartItems key={item._id} 
+                                                    itemCart={item} 
+                                                    saveComplete={getItemsCart} 
+                                                    getItemsCart={getItemsCart} />
                                     ))}
                                     </tbody>
                                 </table>
@@ -102,8 +105,7 @@ export default function Cart() {
                                 </div>
                                 <div className='col-lg-6 col-md-6 col-sm-6'>
                                     <div className='continue__btn update__btn'>
-                                        <button className='primary-btn' onClick={getItemsCart}><i
-                                            className='fa fa-spinner' /> Update cart
+                                        <button className='primary-btn' onClick={getItemsCart}><i className='fa fa-spinner' /> Update cart
                                         </button>
                                     </div>
                                 </div>

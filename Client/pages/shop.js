@@ -118,7 +118,8 @@ export default function Shop() {
                                 <div className='shop__sidebar'>
                                     <div className='shop__sidebar__search'>
                                         <form action='#'>
-                                            <input type='text' style={{color: 'black'}} placeholder='Search...'  value={filterTextTmp} onChange={(e) => handleSetFilterText(e)}/>
+                                            <input type='text' style={{color: 'black'}} placeholder='Search...'  
+                                                    value={filterTextTmp} onChange={(e) => handleSetFilterText(e)}/>
                                             <button type='submit'><span className='icon_search' /></button>
                                         </form>
                                     </div>
@@ -158,7 +159,6 @@ export default function Shop() {
                                                     <div className='card-body'>
                                                         <div className='shop__sidebar__categories'>
                                                             <ul className='nice-scroll'>
-
                                                                 {categories.map((item, index) => {
 
                                                                     return (<li key={index}
@@ -235,15 +235,13 @@ export default function Shop() {
                                                         <span className='sr-only'>Previous</span>
                                                     </a>
                                                 </li>
-                                                {curPage == 1 ? '' : <li className='page-item'><a className='page-link'
-                                                                                                  href='javascript:;'
+                                                {curPage == 1 ? '' : <li className='page-item'><a className='page-link' href='javascript:;'
                                                                                                   onClick={() => setCurPage(curPage - 1)}>{curPage - 1}</a>
                                                 </li>}
-                                                <li className='page-item active'><a className='page-link'
-                                                                                    href='javascript:;'>{curPage}</a>
+                                                <li className='page-item active'>
+                                                    <a className='page-link' href='javascript:;'>{curPage}</a>
                                                 </li>
-                                                {curPage < maxPage ? <li className='page-item'><a className='page-link'
-                                                                                                  href='javascript:;'
+                                                {curPage < maxPage ? <li className='page-item'><a className='page-link' href='javascript:;'
                                                                                                   onClick={() => setCurPage(curPage + 1)}>{curPage + 1}</a>
                                                 </li> : ''}
                                                 <li className={`page-item ${curPage == maxPage ? 'disabled' : ''}`}

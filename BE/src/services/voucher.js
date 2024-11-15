@@ -18,14 +18,13 @@ const VoucherService = {
     },
     async getValidVouchers() {
         try {
-            // Giả sử voucher có ngày hết hạn và cờ isValid
             const validVouchers = await Voucher.find({ 
                 startDate: { $lte: new Date() },
-                endDate: { $gte: new Date() } // Chỉ lấy voucher chưa hết hạn
+                endDate: { $gte: new Date() } 
             });
             return validVouchers;
         } catch (err) {
-            console.error("Lỗi khi lấy voucher:", err);
+            console.error("Error when retrieving voucher", err);
             return [];
         }
     },
