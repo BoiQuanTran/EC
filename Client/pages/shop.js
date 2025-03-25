@@ -235,14 +235,14 @@ export default function Shop() {
                                                         <span className='sr-only'>Previous</span>
                                                     </a>
                                                 </li>
-                                                {curPage == 1 ? '' : <li className='page-item'><a className='page-link' href='javascript:;'
-                                                                                                  onClick={() => setCurPage(curPage - 1)}>{curPage - 1}</a>
+                                                {curPage == 1 ? '' : <li className='page-item'>
+                                                    <a className='page-link' href='javascript:;' onClick={() => setCurPage(curPage - 1)}>{curPage - 1}</a>
                                                 </li>}
                                                 <li className='page-item active'>
                                                     <a className='page-link' href='javascript:;'>{curPage}</a>
                                                 </li>
-                                                {curPage < maxPage ? <li className='page-item'><a className='page-link' href='javascript:;'
-                                                                                                  onClick={() => setCurPage(curPage + 1)}>{curPage + 1}</a>
+                                                {curPage < maxPage ? <li className='page-item'>
+                                                    <a className='page-link' href='javascript:;' onClick={() => setCurPage(curPage + 1)}>{curPage + 1}</a>
                                                 </li> : ''}
                                                 <li className={`page-item ${curPage == maxPage ? 'disabled' : ''}`}
                                                     onClick={() => setCurPage(curPage + 1)}>

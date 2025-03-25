@@ -5,26 +5,35 @@ import { useSelector } from 'react-redux';
 import WishlistService from '../../services/wishlist.service';
 
 export default function Product({ product, typeCol }) {
-    const { _id, image, name, star, exportPrice, salePrice } = product;
+    const { _id, image, name, star, exportPrice, salePrice, badge } = product;
     const user = useSelector((state) => state.user);
     const router = useRouter();
-
     const handleAddWishlist = async () => {
         const data = await WishlistService.create({ product: _id, customer: user.refId });
         return data;
     };
-
-
     const handlePickItem = () => {
         router.push(`/${_id}`);
-    };
 
+    };
     return (
         <div
             className={typeCol === true ? 'col-lg-3 col-md-6 col-sm-6 col-md-6 col-sm-6 mix new-arrivals' : 'col-lg-4 col-md-6 col-sm-6'}>
             <div className='product__item sale'>
                 <div className='product__item__pic set-bg' style={{ backgroundImage: `url(${image})` }}>
-                    {salePrice > 0 ? <span className='label'>Sale</span> : ''}
+                    {salePrice > 0 ? (
+                        <span className='label'>SALE</span>
+                    ) : (
+                        badge === 'NEW' ? (
+                            <span className='label'>NEW</span>
+                        ) : (
+                            badge === 'HOT' ? (
+                                <span className='label'>HOT</span>
+                            ) : ''
+                        )
+                    )}
+
+                    
                     <ul className='product__hover'>
                         <li>
                             <a className=' size-heart-icon' onClick={handleAddWishlist}><i className='fa fa-heart'></i> </a>

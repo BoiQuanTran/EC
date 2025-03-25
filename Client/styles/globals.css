@@ -542,10 +542,10 @@ ol {
 
 .header__nav__option a span {
     color: #0d0d0d;
-    font-size: 11px;
+    font-size: 10px;
     position: absolute;
     left: 5px;
-    top: 8px;
+    top: 6px;
 }
 
 .header__nav__option a:last-child {
@@ -725,7 +725,7 @@ ol {
 }
 
 .banner__item.banner__item--last {
-    margin-top: 100px;
+    /* margin-top: 200px; */
 }
 
 .banner__item__pic {
@@ -811,7 +811,14 @@ ol {
     font-weight: 700;
     color: #111111;
 }
-
+/* .categories__text h2 span:hover {
+    font-weight: 700;
+    color: #111111;
+}
+.categories__text h2 span.active {
+    font-weight: 700;
+    color: #111111;
+} */
 .categories__hot__deal {
     position: relative;
     padding-left: 20px;
@@ -924,6 +931,7 @@ ol {
 
 .instagram__text {
     padding-top: 130px;
+    text-align: justify;
 }
 
 .instagram__text h2 {

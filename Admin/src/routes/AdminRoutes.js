@@ -2,20 +2,22 @@ import { lazy } from 'react';
 import MainLayout from 'layout/MainLayout';
 import Loadable from 'ui-component/Loadable';
 
-const Dashboard = Loadable(lazy(() => import('views/dashboard')));
+// const Dashboard = Loadable(lazy(() => import('views/dashboard')));
+const SaleOrder = Loadable(lazy(() => import('views/sale-order')));
 const ProductMain = Loadable(lazy(() => import('views/product')));
 const Color = Loadable(lazy(() => import('views/color')));
 const Size = Loadable(lazy(() => import('views/size')));
 const Category = Loadable(lazy(() => import('views/category')));
 const Voucher = Loadable(lazy(() => import('views/voucher')));
 const Staff = Loadable(lazy(() => import('views/staff')));
+// const Payment = Loadable(lazy(() => import('views/payment')));
 
 const AdminRoutes = {
     path: '/',
     element: <MainLayout />,
     children: [
         {
-            path: '/', element: <Dashboard />
+            path: '/', element: <SaleOrder />
         },
         {
             path: 'product', children: [{ path: '', element: <ProductMain /> }]
@@ -34,7 +36,7 @@ const AdminRoutes = {
         },
         {
             path: 'staff', element: <Staff />
-        }
+        },
     ]
 };
 

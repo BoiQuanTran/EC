@@ -87,10 +87,10 @@ const ProductController = {
     async update(req, res, next) {
         try {
             const result = await ProductService.updateProduct(req.body);
-            return res.status(200).json(new ResponseModel(200, ['Sửa sản phẩm thành công'], {result}));
+            return res.status(200).json(new ResponseModel(200, ['Product information updated successfully!'], {result}));
         } catch (e) {
             console.log(e);
-            return res.status(500).json(new ResponseModel(500, ['Lỗi cập nhật thông tin sản phẩm'], null));
+            return res.status(500).json(new ResponseModel(500, ['Error updating product information!'], null));
         }
     },
 

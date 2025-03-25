@@ -64,6 +64,8 @@ export default function CheckOut() {
         const v = await VoucherService.getValidVouchers();
         setvalidVoucher(v.result);
     };
+
+    
     const handleVoucherChange = (e) => {
         const codeVoucher = e.target.value;
         setCodeVoucher(codeVoucher);
@@ -135,6 +137,11 @@ export default function CheckOut() {
             const data = await VoucherService.getByCode(codeVoucher);
             const res = data.result || [];
             saleOrderFull.voucher = res._id;
+            // const updatevoucher = {
+            //     _id: res._id,
+            //     quantity: res.quantity -1,
+            // };
+            // await VoucherService.update(updatevoucher);
         }
         const data = await SaleOrderService.create(saleOrderFull);
         if(data){
@@ -223,7 +230,10 @@ export default function CheckOut() {
                                             <p>Voucher:</p>
                                             {validVoucher.length > 0 ? (
                                                 validVoucher.map(voucher => (
-                                                    <li key={voucher._id}>{voucher.code}</li>
+                                                    <li key={voucher._id}>
+                                                        {voucher.code}
+                                                        <br/>
+                                                    </li>
                                                 ))
                                             ) : (
                                                 <p>No available voucher</p>

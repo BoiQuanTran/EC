@@ -3,10 +3,12 @@ import { useCallback, useEffect, useState } from 'react';
 import Layout from '../components/layout';
 import WishlistItems from '../components/shared/wishlist-items';
 import WishlistService from '../services/wishlist.service';
+import { setNumberOfWishList } from '../store/feature/UserSlice';
+import { useDispatch } from 'react-redux';
 
 export default function Home() {
     const [products, setProducts] = useState([]);
-
+    const dispatch = useDispatch();
 
     useEffect(() => {
         getProducts();
@@ -15,6 +17,7 @@ export default function Home() {
     const getProducts = async () => {
         const data = await WishlistService.getAll();
         setProducts(data.result);
+        // dispatch(setNumberOfWishList(data.result.length));
     };
     const deleteWishlist = useCallback(async (productId) => {
         const wishList = products.find(e => e.product._id == productId);

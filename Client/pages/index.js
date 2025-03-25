@@ -14,7 +14,11 @@ export default function Home() {
         const data = await ProductService.getFeature();
         setProducts(data.result);
     };
+    const [selectedCategory, setSelectedCategory] = useState('Woman Collections');
 
+    const handleCategoryClick = (category) => {
+        setSelectedCategory(category);
+    };
     return (
         <Layout>
             <div>
@@ -87,7 +91,7 @@ export default function Home() {
                                     </div>
                                 </div>
                             </div>
-                            <div className='col-lg-7'>
+                            <div className='col-lg-7 offset-lg-4'>
                                 <div className='banner__item banner__item--last'>
                                     <div className='banner__item__pic'>
                                         <img src='img/banner/banner-3.jpg' alt='' />
@@ -422,7 +426,7 @@ export default function Home() {
                                     <span>Deal Of The Week</span>
                                     <h2>BLACK SATURN</h2>
                                     <div className='categories__deal__countdown__timer' id='countdown'>
-                                        <div className='cd-item'>
+                                        {/* <div className='cd-item'>
                                             <span>3</span>
                                             <p>Days</p>
                                         </div>
@@ -437,7 +441,7 @@ export default function Home() {
                                         <div className='cd-item'>
                                             <span>18</span>
                                             <p>Seconds</p>
-                                        </div>
+                                        </div> */}
                                     </div>
                                     <a href='/shop' className='primary-btn'>Shop now</a>
                                 </div>

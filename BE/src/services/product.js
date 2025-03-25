@@ -28,7 +28,7 @@ const ProductService = {
         return product;
     },
     async getFilter(filterModel) {
-        const { searchText, priceTo, cate, supplier, size, page } = filterModel;
+        const { searchText, priceTo, cate, supplier, page } = filterModel;
         const limit = 9;
         const totalItem = await Product.count();
         let objectFilter = {};
@@ -42,7 +42,7 @@ const ProductService = {
             {
                 ...objectFilter,
                 name: { $regex: '.*' + searchText + '.*', $options: 'i' },
-                exportPrice: Number(priceTo) === 0 ? { $gt: Number(priceTo) }: { $lt: Number(priceTo) }
+                exportPrice: Number(priceTo) === 0 ? { $gt: Number(priceTo) }: { $lte: Number(priceTo) }
             }
         ).skip((page * limit) - limit).limit(limit);
         return { ...filterModel, totalItem, products, limit };
@@ -55,7 +55,7 @@ const ProductService = {
     ,
     async getRelatedProducts(id) {
         const product = await Product.findOne({ _id: id });
-        const products = await Product.find({ supplier: mongoose.Types.ObjectId(product.supplier) });
+        const products = await Product.find({ supplier: mongoose.Types.ObjectId(product.supplier) }).limit(6);
         return products;
     }
     ,

@@ -307,7 +307,7 @@ export default function ProductDetail() {
                                         </div>
                                         <div className='row'>
                                             {relatedProducts.map(item => {
-                                                return <Product typeCol={true} product={item} key={item._id} />;
+                                                return <Product typeCol={false} product={item} key={item._id} />;
                                             })}
                                         </div>
                                     </div>

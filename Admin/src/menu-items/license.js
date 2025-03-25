@@ -1,4 +1,4 @@
-import { IconArchive, IconBuildingStore } from '@tabler/icons';
+import { IconUser, IconBuildingStore } from '@tabler/icons';
 
 
 const license = {
@@ -17,6 +17,7 @@ const license = {
                     title: 'Sale orders',
                     type: 'item',
                     url: '/sale-order',
+                    icon: IconBuildingStore,
                     breadcrumbs: false
                 },
                 {
@@ -24,8 +25,16 @@ const license = {
                     title: 'Customers',
                     type: 'item',
                     url: '/customer',
+                    icon: IconUser,
                     breadcrumbs: false
-                }
+                },
+                // {
+                //     id: 'payment-info',
+                //     title: 'Payment',
+                //     type: 'item',
+                //     url: '/payment',
+                //     breadcrumbs: false
+                // }
         //     ]
         // },
         // {

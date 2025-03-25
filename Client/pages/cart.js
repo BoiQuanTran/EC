@@ -35,16 +35,16 @@ export default function Cart() {
         }
     };
 
-    const handleApproveVoucher = async () => {
-        const data = await VoucherService.getAll();
-        const vouchers = data.result || [];
-        vouchers.forEach((voucherCreated) => {
-            if(code === voucherCreated.code ){
-                setVoucher(voucherCreated);
-            }
-        });
+    // const handleApproveVoucher = async () => {
+    //     const data = await VoucherService.getAll();
+    //     const vouchers = data.result || [];
+    //     vouchers.forEach((voucherCreated) => {
+    //         if(code === voucherCreated.code ){
+    //             setVoucher(voucherCreated);
+    //         }
+    //     });
 
-    }
+    // }
     const handleCheckout = (e) => {
         if (itemsCart.length === 0){
             e.preventDefault()

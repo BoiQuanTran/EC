@@ -12,10 +12,13 @@ const VoucherService = {
         return axiosClient.get(`/voucher/get-full/${id}`);
     },
     getByCode: (code) => {
-        return axiosClient.get(`/voucher/getByCode/${code}`)
+        return axiosClient.get(`/voucher/getByCode/${code}`);
     },
     getValidVouchers: () => {
-        return axiosClient.get(`/voucher/getValidVouchers`)
+        return axiosClient.get('/voucher/getValidVouchers');
+    },
+    update: (voucher) => {
+        return axiosClient.patch('/voucher/update', voucher);
     }
 };
 export default VoucherService;

@@ -12,8 +12,8 @@ export default function Layout({ children }) {
         <div>
             <Head>
                 <meta charSet='UTF-8' />
-                <meta name='description' content='Meow_Eyewear Template' />
-                <meta name='keywords' content='Meow_Eyewear, unica, creative, html' />
+                <meta name='description' content='Male-Fashion Template' />
+                <meta name='keywords' content='Male-Fashion, unica, creative, html' />
                 <meta name='viewport' content='width=device-width, initial-scale=1.0' />
                 <meta httpEquiv='X-UA-Compatible' content='ie=edge' />
                 <link href='/img/logo1.png' rel='icon' />
@@ -25,7 +25,8 @@ export default function Layout({ children }) {
                 {/* eslint-disable-next-line @next/next/no-sync-scripts */}
                 <script type="text/javascript" 
                     src="https://cdn.fchat.vn/assets/embed/webchat.js?id=6735f4b7d042e333ae5a2dd9" 
-                    async="async"></script>
+                    async="async"
+                ></script>
                 <script src='js/jquery-3.3.1.min.js' ></script>
                 
             </Head>

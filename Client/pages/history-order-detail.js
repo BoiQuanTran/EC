@@ -229,18 +229,18 @@ export default function HistoryOrderDetail({ saleOrderFull, total, discount, tot
                                                                     </p>
                                                                 )
                                                             )        
-                                                        ) : saleOrderFull.status === SALE_ORDER_STATUS.COMPLETED ? (
+                                                        ) : saleOrderFull.status === SALE_ORDER_STATUS.CONFIRM ? (
                                                             saleOrderFull.paymentMethod === PAYMENT_METHOD.COD ? (
                                                                 saleOrderFull.voucher ? (
                                                                     <p>
                                                                         <strong>{saleOrderFull.paymentMethod}</strong><br />                                                                        
                                                                         Total: ${total1}{' '}
-                                                                        <span className='badge bg-success rounded-pill'>PAID</span>
+                                                                        <span className='badge bg-success rounded-pill'>UNPAID</span>
                                                                     </p>
                                                                 ) : (
                                                                     <p>
                                                                         Total: ${total}{' '}
-                                                                        <span className='badge bg-success rounded-pill'>PAID</span>
+                                                                        <span className='badge bg-success rounded-pill'>UNPAID</span>
                                                                     </p>
                                                                 )
                                                             ) : (
@@ -257,6 +257,35 @@ export default function HistoryOrderDetail({ saleOrderFull, total, discount, tot
                                                                     </p>
                                                                 )
                                                             )                                                                                               
+                                                        ) : saleOrderFull.status === SALE_ORDER_STATUS.COMPLETED ? (
+                                                            saleOrderFull.paymentMethod === PAYMENT_METHOD.COD ? (
+                                                                saleOrderFull.voucher ? (
+                                                                    <p>
+                                                                        <strong>{saleOrderFull.paymentMethod}</strong><br />                                                                    
+                                                                        Total: ${total1}{' '}
+                                                                        <span className='badge bg-success rounded-pill'>PAID</span>
+                                                                    </p>
+                                                                ) : (
+                                                                    <p>
+                                                                        Total: ${total}{' '}
+                                                                        <span className='badge bg-success rounded-pill'>PAID</span>
+                                                                    </p>
+                                                                )
+
+                                                            ) : (
+                                                                saleOrderFull.voucher ? (
+                                                                    <p>
+                                                                        <strong>{saleOrderFull.paymentMethod}</strong><br />                                                                    
+                                                                        Total: ${total1}{' '}
+                                                                        <span className='badge bg-success rounded-pill'>PAID</span>
+                                                                    </p>
+                                                                ) : (
+                                                                    <p>
+                                                                        Total: ${total}{' '}
+                                                                        <span className='badge bg-success rounded-pill'>PAID</span>
+                                                                    </p>
+                                                                )
+                                                            ) 
                                                         ) : saleOrderFull.paymentMethod === PAYMENT_METHOD.COD ? (
                                                             saleOrderFull.voucher ? (
                                                                 <p>

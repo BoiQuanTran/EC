@@ -19,8 +19,9 @@ const VoucherService = {
     async getValidVouchers() {
         try {
             const validVouchers = await Voucher.find({ 
-                startDate: { $lte: new Date() },
-                endDate: { $gte: new Date() } 
+                quantity: { $gt: 0}, // quantity > 0
+                startDate: { $lte: new Date() }, // <= current date
+                endDate: { $gte: new Date() } // >= current date
             });
             return validVouchers;
         } catch (err) {

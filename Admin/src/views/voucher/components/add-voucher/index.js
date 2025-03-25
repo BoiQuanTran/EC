@@ -26,6 +26,7 @@ const AddVoucher = ({ saveCompleteEvent }) => {
             saveCompleteEvent();
             dispatch(closeAddVoucher());
         }
+        console.log(data);
     };
 
     return (
@@ -50,6 +51,7 @@ const AddVoucher = ({ saveCompleteEvent }) => {
                     startDate: Yup.date().required('Please enter start date.'),
                     endDate: Yup.date().required('Please enter end date.'),
                     quantity: Yup.number().required('Please enter number of vouchers issued.')
+                        
                 })}
                 onSubmit={handleAddVoucher}
             >
@@ -173,6 +175,7 @@ const AddVoucher = ({ saveCompleteEvent }) => {
                         <DialogActions sx={{ justifyContent: 'space-between', marginTop: 2 }}>
                             <Button onClick={handleClose}>Cancel</Button>
                             <Button type={'submit'}>Add</Button>
+                            
                         </DialogActions>
                     </form>
                 )}
@@ -183,3 +186,4 @@ const AddVoucher = ({ saveCompleteEvent }) => {
     );
 };
 export default AddVoucher;
+// .min(1, 'Voucher quantity must be greater than 0')

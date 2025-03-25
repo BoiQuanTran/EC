@@ -118,7 +118,9 @@ export default function Header() {
                                 </form>
                             </nav> */}
 
-                            <a href='/wishlist'><img src='img/icon/heart.png' alt='' /></a>
+                            <a href='/wishlist'><img src='img/icon/heart.png' alt='' />
+                                {/* <span>{clientUser.numberOfWishList}</span> */}
+                            </a>
                             <a href='/cart'><img src='img/icon/cart.png' alt='' />
                                 <span>{clientUser.numberOfCart}</span></a>
                             <div className='price'>${clientUser.totalPriceOfCart}</div>

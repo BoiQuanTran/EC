@@ -39,12 +39,18 @@ export const VoucherSlice = createSlice({
             voucherList.forEach(item => {
                 let startDate = Date.parse(item.startDate);
                 let endDate = Date.parse(item.endDate);
+                let quantity = item.quantity;
                 let now = Date.parse(dateNow);
 
                 if (now < startDate) {
                     item.status = VOUCHER_STATUS.NON_START;
                 } else if (now >= startDate && now <= endDate) {
-                    item.status = VOUCHER_STATUS.HAPPENING;
+                    if (quantity > 0){
+                        item.status = VOUCHER_STATUS.HAPPENING;
+                    }
+                    else{
+                        item.status = VOUCHER_STATUS.OVER;
+                    }
                 } else if (now > endDate) {
                     item.status = VOUCHER_STATUS.OVER;
                 }
